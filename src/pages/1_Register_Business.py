@@ -2,24 +2,8 @@ import streamlit as st
 from neighborhoods import neighborhoods
 from business import Business
 
-# Sidebar navigation
-# st.sidebar.title("Navigation")
-# page = st.sidebar.selectbox("Choose a page", ["Home", "Add Item", "About"])
-
-# # Home page
-# if page == "Home":
-#     st.title("Home Page")
-#     st.write("Welcome to the Home page!")
-#     st.write("You can search for things here!")
-
-# Add Item page
-
 st.title("Register Your Business")
 st.write("Please fill out the below boxes to register your profile")
-
-# Initialize session state to store data
-if 'user_data' not in st.session_state:
-    st.session_state['user_data'] = {}
 
 user_name = st.text_input('Enter your name or business name:')
 user_email = st.text_input('Enter your contact email:')
@@ -35,14 +19,5 @@ if st.button('Add Your Business'):
         st.success(f'Item "{new_item}" added!')
     else:
         st.error('Please fill all fields before registering')
-
-st.write("Current items:")
-st.write(st.session_state['user_data'])
-
-# # About page
-# elif page == "About":
-#     st.title("About Page")
-#     st.write("This is the about page for the app.")
-#     st.write("Streamlit makes it easy to build interactive web apps using Python.")
 
 
