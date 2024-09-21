@@ -1,14 +1,19 @@
 import streamlit as st
-from neighborhoods import neighborhoods
+from dropdowns import neighborhoods
+from dropdowns import services
 from business import Business
 
 st.title("Register Your Business")
 st.write("Please fill out the below boxes to register your profile")
 
+# Initialize session state to store data
+if 'user_data' not in st.session_state:
+    st.session_state['user_data'] = {}
+
 user_name = st.text_input('Enter your name or business name:')
 user_email = st.text_input('Enter your contact email:')
 user_neighborhood = st.selectbox('What neighborhood are you based in?', neighborhoods)
-user_services = st.multiselect('What is your service type', ["Beauty Services","Tailoring / Garments","Photography","Art / Crafts","Home Services", "Consulting Services", "Accounting"])
+user_services = st.multiselect('What is your service type', services)
 user_socials = st.text_input('What are links to your socials: (separate by commas)')
 user_description = st.text_input('Description of your service')
 

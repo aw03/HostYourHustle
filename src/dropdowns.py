@@ -1,5 +1,5 @@
 neighborhoods = [
-    "Allston", 
+    "Allston",
     "Back Bay",
     "Bay Village",
     "Beacon Hill",
@@ -21,5 +21,21 @@ neighborhoods = [
     "South End",
     "West End",
     "West Roxbury",
-    "Wharf District"
+    "Wharf District",
+]
+
+services = [
+    "Beauty Services",
+    "Tailoring / Garments",
+    "Photography",
+    "Art / Crafts",
+    "Home Repair",
+    "Consulting Services",
+    "Accounting",
+    "Food",
+    "Interior Design",
+    "Tutoring",
+    "Graphic Design",
+    "Pet Sitting",
+    "Freelance Writing",
 ]

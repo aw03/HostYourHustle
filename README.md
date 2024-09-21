@@ -1,6 +1,6 @@
 # HostYourHustle
 
-#Dependencies downloaded
+# Dependencies downloaded
 
 
-$ pip install streamlit
+$$ pip install streamlit
