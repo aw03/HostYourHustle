@@ -1,36 +1,47 @@
 import streamlit as st
+from neighborhoods import neighborhoods
+from business import Business
 
-# Initialize session state to store data
-if 'user_data' not in st.session_state:
-    st.session_state['user_data'] = []
+# Sidebar navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.selectbox("Choose a page", ["Home", "Add Item", "About"])
 
-# Title of the app
-st.title('Streamlit App with Sidebar')
+# Home page
+if page == "Home":
+    st.title("Home Page")
+    st.write("Welcome to the Home page!")
+    st.write("You can search for things here!")
 
-# Sidebar title
-st.sidebar.title("Options")
+# Add Item page
+elif page == "Add Item":
+    st.title("Register Your Business")
+    st.write("Please fill out the below boxes to register your profile")
 
-# Sidebar input text box
-new_item = st.sidebar.text_input('Add a new item')
+    # Initialize session state to store data
+    if 'user_data' not in st.session_state:
+        st.session_state['user_data'] = []
 
-# Sidebar Add button
-if st.sidebar.button('Add Item'):
-    if new_item:
-        # Add the new item to the list
-        st.session_state['user_data'].append(new_item)
-        st.sidebar.success(f'Item "{new_item}" added successfully!')
-    else:
-        st.sidebar.error('Please enter an item before adding.')
+    user_name = st.text_input('Enter your name or business name:')
+    user_email = st.text_input('Enter your contact email:')
+    user_neighborhood = st.selectbox('What neighborhood are you based in?', neighborhoods)
+    user_services = st.multiselect('What is your service type', ["Beauty Services","Tailoring / Garments","Photography","Art / Crafts","Home Services", "Consulting Services", "Accounting"])
+    user_socials = st.text_input('What are links to your socials: (separate by commas)')
+    user_description = st.text_input('Description of your service')
 
-# Display current items in the main area
-st.write('Current items:')
-st.write(st.session_state['user_data'])
+    if st.button('Add Your Business'):
+        if not (user_name == "" or user_email == "" or user_neighborhood == "" or user_services == []  or user_socials == "" or user_description == ""):
+            new_item = Business(user_name,user_email,user_neighborhood,user_services,user_socials,user_description)
+            st.session_state['user_data'].append(new_item)
+            st.success(f'Item "{new_item}" added!')
+        else:
+            st.error('Please fill all fields before registering')
 
-# Sidebar button to process data
-if st.sidebar.button('Process Data'):
-    st.write('Processing your data...')
-    # Example of simple data processing (just showing the length of the list)
-    st.write(f'Total items: {len(st.session_state["user_data"])}')
+    st.write("Current items:")
+    st.write(st.session_state['user_data'])
 
-# Additional main area content (optional)
-st.write('You can use the sidebar to add and process items.')
+# About page
+elif page == "About":
+    st.title("About Page")
+    st.write("This is the about page for the app.")
+    st.write("Streamlit makes it easy to build interactive web apps using Python.")
+
