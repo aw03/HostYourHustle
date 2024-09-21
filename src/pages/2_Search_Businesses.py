@@ -1,5 +1,6 @@
 import streamlit as st
 from dropdowns import neighborhoods
+from dropdowns import services
 from business import Business
 
 st.title("Search For Businesses")
@@ -9,10 +10,25 @@ st.write("Please Use the Following Boxes to Filter Businesses")
 if 'user_data' not in st.session_state:
     st.session_state['user_data'] = {}
 
-neighborhood = st.multiselect("Filter By Neighborhood", neighborhoods)
+st.header("Filters:")
+neighborhood_filt = set(st.multiselect("Filter By Neighborhood", neighborhoods))
+services_filt = set(st.multiselect("Filter By Services", services))
+
+def is_filter_out(elt):
+    if services_filt != set():
+        if services_filt.intersection(elt.get_services) == 0:
+            return False
+    if neighborhood_filt != set():
+        if elt.get_neighborhood not in neighborhood_filt:
+            return False
+    return True
+
 
 st.header("Current Searches:")
+
 for elt in st.session_state['user_data'].values():
+    if not is_filter_out(elt):
+        continue
     st.markdown(
     """
     <hr style="border: 1px solid black; margin: 20px 0;">
@@ -25,3 +41,6 @@ for elt in st.session_state['user_data'].values():
     st.write(elt.get_description)
     st.write("Email: " + elt.get_contact)
     st.write("\n".join(elt.get_socials))
+
+st.write(st.session_state['user_data'
+])

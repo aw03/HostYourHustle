@@ -15,7 +15,6 @@ class Business:
         self.description = description
 
     # Increment the class ID each time a new object is created
-    @staticmethod
     def __new_business_id():
         curr = Business.__business_id
         Business.__business_id += 1
