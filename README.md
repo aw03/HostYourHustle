@@ -20,3 +20,6 @@ pip install streamlit
 streamlit run src/Home.py
 ```
 
+## Contributors
+
+This app was created by Alex Wu (aw03) and Tiffany Stephens
