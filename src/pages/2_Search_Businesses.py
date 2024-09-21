@@ -15,10 +15,10 @@ neighborhood_filt = set(st.multiselect("Filter By Neighborhood", neighborhoods))
 services_filt = set(st.multiselect("Filter By Services", services))
 
 def is_filter_out(elt):
-    if services_filt != set():
-        if services_filt.intersection(elt.get_services) == 0:
+    if len(services_filt) != 0:
+        if len(services_filt.intersection(elt.get_services)) == 0:
             return False
-    if neighborhood_filt != set():
+    if len(neighborhood_filt) != 0:
         if elt.get_neighborhood not in neighborhood_filt:
             return False
     return True
@@ -41,6 +41,3 @@ for elt in st.session_state['user_data'].values():
     st.write(elt.get_description)
     st.write("Email: " + elt.get_contact)
     st.write("\n".join(elt.get_socials))
-
-st.write(st.session_state['user_data'
-])
