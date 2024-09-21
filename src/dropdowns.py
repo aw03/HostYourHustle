@@ -38,4 +38,5 @@ services = [
     "Graphic Design",
     "Pet Sitting",
     "Freelance Writing",
+    "Fitness / Sports / Coaching"
 ]

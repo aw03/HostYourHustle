@@ -4,7 +4,7 @@ from dropdowns import services
 from business import Business
 
 st.title("Search For Businesses")
-st.write("Please Use the Following Boxes to Filter Businesses")
+st.write("Please Use the Following Dropdowns to Filter Businesses")
 
 # Initialize session state to store data
 if 'user_data' not in st.session_state:
@@ -36,7 +36,7 @@ for elt in st.session_state['user_data'].values():
     unsafe_allow_html=True
 )
     st.header(elt.get_name)
-    st.subheader(", ".join(elt.get_services))
+    st.subheader("Services: " + ", ".join(elt.get_services))
     st.subheader("Based in: " + elt.get_neighborhood)
     st.write(elt.get_description)
     st.write("Email: " + elt.get_contact)
