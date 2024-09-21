@@ -23,7 +23,7 @@ class Business:
 
     # Getter for business ID
     @property
-    def business_id(self):
+    def get_id(self):
         return self.id
 
     # Getter for name

@@ -19,7 +19,7 @@ elif page == "Add Item":
 
     # Initialize session state to store data
     if 'user_data' not in st.session_state:
-        st.session_state['user_data'] = []
+        st.session_state['user_data'] = {}
 
     user_name = st.text_input('Enter your name or business name:')
     user_email = st.text_input('Enter your contact email:')
@@ -31,7 +31,7 @@ elif page == "Add Item":
     if st.button('Add Your Business'):
         if not (user_name == "" or user_email == "" or user_neighborhood == "" or user_services == []  or user_socials == "" or user_description == ""):
             new_item = Business(user_name,user_email,user_neighborhood,user_services,user_socials,user_description)
-            st.session_state['user_data'].append(new_item)
+            st.session_state['user_data'][new_item.get_id] = new_item
             st.success(f'Item "{new_item}" added!')
         else:
             st.error('Please fill all fields before registering')

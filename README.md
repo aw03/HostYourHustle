@@ -3,4 +3,4 @@
 #Dependencies downloaded
 
 
-$ pip install streamlit$
+$$ pip install streamlit$$
