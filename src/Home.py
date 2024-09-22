@@ -7,7 +7,6 @@ st.set_page_config(
 st.write("# Welcome to Host Your Hustle!")
 st.write("## Economic mobility in the Black Community")
 
-# st.markdown("---")
 st.markdown(
     """
     <hr style="border: 1px solid black; margin: 20px 0;">
