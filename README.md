@@ -8,7 +8,7 @@ Shining a positive light on the word hustle and promoting those who must work fo
 
 To access the online application go to url below:
 
-    https://hostyourhustle.streamlit.app/
+    https://hostyourhustle.streamlit.app
 
 # Downloading Dependencies and Running The Application Locally
 
